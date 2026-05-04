@@ -49,7 +49,7 @@ const AdminDashboard = () => {
     localStorage.removeItem('atoken');
     setatoken('');
     toast.info('Logged out successfully');
-    navigate('/adminlogin');
+    navigate('/adminlogin', { replace: true });
   };
 
   return (

@@ -24,7 +24,7 @@ const AdminLogin = () => {
                 setatoken(token);
                 localStorage.setItem('atoken', token);
                 toast.success('Welcome back, Admin!');
-                navigate('/adminpanel');
+                navigate('/adminpanel', { replace: true });
             }
         } catch (err) {
             console.error(err);
