@@ -41,7 +41,7 @@ const AdminDashboard = () => {
     if (atoken) {
       fetchData();
     } else {
-      navigate('/adminlogin');
+      navigate('/adminlogin', { replace: true });
     }
   }, [atoken]);
 
@@ -49,8 +49,12 @@ const AdminDashboard = () => {
     localStorage.removeItem('atoken');
     setatoken('');
     toast.info('Logged out successfully');
-    navigate('/adminlogin', { replace: true });
+    window.location.replace('/adminlogin');
   };
+
+  if (!atoken) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-slate-50">

@@ -50,13 +50,13 @@ const App = () => {
         {/* 🔐 If already logged in → go to dashboard */}
         <Route 
           path='/adminlogin' 
-          element={atoken ? <Navigate to="/adminpanel" /> : <AdminLogin />} 
+          element={atoken ? <Navigate to="/adminpanel" replace /> : <AdminLogin />} 
         />
 
         {/* 🔐 Protect admin panel */}
         <Route 
           path='/adminpanel' 
-          element={atoken ? <AdminDashboard /> : <Navigate to="/adminlogin" />} 
+          element={atoken ? <AdminDashboard /> : <Navigate to="/adminlogin" replace />} 
         />
 
       </Routes>

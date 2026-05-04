@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../context/Appcontext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -6,13 +6,19 @@ import { useNavigate } from 'react-router-dom';
 import { GraduationCap } from 'lucide-react';
 
 const AdminLogin = () => {
-    const { BackendURL, setatoken } = useContext(AppContext);
+    const { BackendURL, setatoken, atoken } = useContext(AppContext);
     const [inp, setinp] = useState({
         email: "", 
         password: ""
     });
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (atoken) {
+            navigate('/adminpanel', { replace: true });
+        }
+    }, [atoken]);
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -87,7 +93,7 @@ const AdminLogin = () => {
 
                     <div className="mt-6 sm:mt-8 text-center">
                         <button 
-                            onClick={() => navigate('/')} 
+                            onClick={() => navigate('/', { replace: true })} 
                             className="text-xs sm:text-sm font-medium text-slate-400 hover:text-orange-600 transition-colors"
                         >
                             ← Back to Home
