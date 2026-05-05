@@ -30,6 +30,8 @@ const Landing = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
+    studentName: '',
+    studentClass: '',
     mobile: '',
     email: '',
     location: '',
@@ -80,6 +82,8 @@ const Landing = () => {
         toast.success('Information submitted successfully!');
         setFormData({
           name: '',
+          studentName: '',
+          studentClass: '',
           mobile: '',
           email: '',
           location: '',
@@ -374,7 +378,40 @@ const Landing = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        placeholder="John Doe"
+                        placeholder="Parent's Name"
+                        className="w-full pl-10 sm:pl-12 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl border border-slate-100 bg-slate-50 focus:bg-white focus:ring-4 focus:ring-orange-100 focus:border-orange-500 outline-none transition-all text-base sm:text-lg font-medium"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label className="text-[10px] sm:text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Student Name</label>
+                    <div className="relative">
+                      <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-slate-300" />
+                      <input
+                        type="text"
+                        name="studentName"
+                        value={formData.studentName}
+                        onChange={handleChange}
+                        required
+                        placeholder="Child's Name"
+                        className="w-full pl-10 sm:pl-12 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl border border-slate-100 bg-slate-50 focus:bg-white focus:ring-4 focus:ring-orange-100 focus:border-orange-500 outline-none transition-all text-base sm:text-lg font-medium"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label className="text-[10px] sm:text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Class</label>
+                    <div className="relative">
+                      <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-slate-300" />
+                      <input
+                        type="text"
+                        name="studentClass"
+                        value={formData.studentClass}
+                        onChange={handleChange}
+                        required
+                        placeholder="e.g. Preschool"
                         className="w-full pl-10 sm:pl-12 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl border border-slate-100 bg-slate-50 focus:bg-white focus:ring-4 focus:ring-orange-100 focus:border-orange-500 outline-none transition-all text-base sm:text-lg font-medium"
                       />
                     </div>
@@ -407,7 +444,7 @@ const Landing = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        placeholder="john@example.com"
+                        placeholder="parent@example.com"
                         className="w-full pl-10 sm:pl-12 pr-4 sm:pr-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl border border-slate-100 bg-slate-50 focus:bg-white focus:ring-4 focus:ring-orange-100 focus:border-orange-500 outline-none transition-all text-base sm:text-lg font-medium"
                       />
                     </div>

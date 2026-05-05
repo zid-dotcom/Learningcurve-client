@@ -117,17 +117,18 @@ const AdminDashboard = () => {
             <table className="w-full text-left">
               <thead>
                 <tr className="text-slate-500 text-sm font-semibold uppercase tracking-wider bg-slate-50/30">
+                  <th className="px-6 py-4">Full Name</th>
                   <th className="px-6 py-4">Student Name</th>
+                  <th className="px-6 py-4">Class</th>
                   <th className="px-6 py-4">Contact Info</th>
                   <th className="px-6 py-4">Location</th>
-                  <th className="px-6 py-4">Description</th>
                   <th className="px-6 py-4">Date</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {loading ? (
                   <tr>
-                    <td colSpan="5" className="px-6 py-12 text-center text-slate-500">
+                    <td colSpan="6" className="px-6 py-12 text-center text-slate-500">
                       <div className="flex flex-col items-center gap-2">
                         <div className="w-8 h-8 border-4 border-orange-600 border-t-transparent rounded-full animate-spin"></div>
                         <span>Loading inquiries...</span>
@@ -136,7 +137,7 @@ const AdminDashboard = () => {
                   </tr>
                 ) : data.length === 0 ? (
                   <tr>
-                    <td colSpan="5" className="px-6 py-12 text-center text-slate-500">
+                    <td colSpan="6" className="px-6 py-12 text-center text-slate-500">
                       No inquiries found.
                     </td>
                   </tr>
@@ -145,6 +146,12 @@ const AdminDashboard = () => {
                     <tr key={item._id || index} className="hover:bg-slate-50/80 transition-colors group">
                       <td className="px-6 py-4">
                         <div className="font-bold text-slate-900">{item.name}</div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="font-medium text-slate-700">{item.studentName}</div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className="text-sm font-medium text-slate-600">{item.studentClass}</span>
                       </td>
                       <td className="px-6 py-4">
                         <div className="text-sm">
@@ -156,11 +163,6 @@ const AdminDashboard = () => {
                         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-50 text-orange-700 border border-orange-100">
                           {item.location}
                         </span>
-                      </td>
-                      <td className="px-6 py-4">
-                        <p className="text-sm text-slate-600 max-w-xs truncate" title={item.description}>
-                          {item.description}
-                        </p>
                       </td>
                       <td className="px-6 py-4 text-sm text-slate-500 font-medium">
                         {item.createdAt ? new Date(item.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : 
