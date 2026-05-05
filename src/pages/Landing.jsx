@@ -136,7 +136,7 @@ const Landing = () => {
               <div className="w-8 h-8 sm:w-11 sm:h-11 bg-gradient-to-br from-orange-600 to-amber-600 rounded-lg sm:rounded-2xl flex items-center justify-center shadow-lg shadow-orange-100 group-hover:scale-105 transition-transform">
                 <GraduationCap className="text-white w-4 h-4 sm:w-6 sm:h-6" />
               </div>
-              <span className="text-sm sm:text-2xl font-black tracking-tight text-slate-800">
+              <span className="text-lg sm:text-2xl font-black tracking-tight text-slate-800">
                 <span className="sm:hidden">Learning <span className="text-orange-600">Curve</span></span>
                 <span className="hidden sm:inline">The Learning <span className="text-orange-600">Curve</span></span>
               </span>
@@ -180,7 +180,9 @@ const Landing = () => {
             >
               <div className="px-4 py-6 space-y-3">
                 <button 
-                  onClick={() => {
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setIsMenuOpen(false);
                     navigate('/adminlogin');
                   }}
@@ -188,10 +190,14 @@ const Landing = () => {
                 >
                   Admin Portal
                 </button>
-                <div className="pt-2 flex justify-center">
+                <div className="pt-2 flex justify-start">
                   <button 
-                    onClick={scrollToForm}
-                    className="px-8 py-3 bg-slate-900 text-white text-center font-bold rounded-xl shadow-lg hover:bg-slate-800 active:scale-95 transition-all text-sm whitespace-nowrap"
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      scrollToForm();
+                    }}
+                    className="px-8 py-3 bg-slate-900 text-white font-bold rounded-xl shadow-lg hover:bg-slate-800 active:scale-95 transition-all text-sm whitespace-nowrap"
                   >
                     Join Now
                   </button>
@@ -266,7 +272,7 @@ const Landing = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="relative hidden lg:block"
+              className="relative block mt-12 lg:mt-0"
             >
               <div className="relative z-10 bg-white rounded-[2.5rem] p-3 shadow-2xl border border-orange-50 overflow-hidden group">
                 <div className="aspect-[4/5] rounded-[2rem] overflow-hidden relative">
